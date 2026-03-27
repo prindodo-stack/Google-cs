@@ -29,7 +29,6 @@
             <p class="text-blue-100 text-sm leading-relaxed">
                 본 페이지는 학교 담당자가 <strong>아이모두 Google 관리자</strong>에게 기기 관리 정책 적용을 공식적으로 요청하는 신청 시스템입니다.
             </p>
-            <!-- 오른쪽 정렬(text-right) 추가 -->
             <p class="text-blue-200 text-[11px] mt-4 opacity-90 font-medium tracking-tight text-right">Made by 교육연구사 이정도</p>
         </div>
 
@@ -44,7 +43,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <label class="relative block cursor-pointer group">
-                            <input type="radio" name="deviceType" value="Chromebook" class="peer absolute opacity-0" required>
+                            <input type="radio" name="deviceType" value="Chromebook" class="peer absolute opacity-0">
                             <div class="p-6 border-2 border-gray-100 rounded-2xl peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:border-blue-200 transition-all text-center shadow-sm h-full flex flex-col items-center justify-center">
                                 <div class="w-32 h-24 bg-white rounded-xl flex items-center justify-center mb-4 overflow-hidden border border-gray-50">
                                     <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimages.samsung.com%2Fkdp%2Fcms_contents%2F103300%2F7ec882df-a5c3-4245-b9a0-237c69195532.jpg%3F%24FB_TYPE_A_JPG%24&type=sc960_832" alt="Chromebook" class="device-img w-full h-full object-contain">
@@ -73,15 +72,15 @@
                 <div id="sectionChromebook" class="step-content">
                     <div class="flex items-center justify-between mb-6 border-b pb-4">
                         <h2 class="text-lg font-bold text-gray-800 tracking-tight">크롬북 관리 서비스 신청</h2>
-                        <button type="button" onclick="goToStep('device')" class="text-xs text-blue-600 font-medium underline">기기 변경</button>
+                        <button type="button" onclick="goToStep('device')" class="text-xs text-blue-600 font-medium underline tracking-tight">기기 변경</button>
                     </div>
 
                     <div class="space-y-6">
                         <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
-                            <p class="text-xs font-bold text-blue-800 mb-3">기존 기기 등록 계정 도메인 선택 (G열)</p>
+                            <p class="text-xs font-bold text-blue-800 mb-3 tracking-tight">기존 기기 등록 계정 도메인 선택 (G열)</p>
                             <div class="space-y-3">
                                 <label class="flex items-center cursor-pointer p-2 rounded hover:bg-blue-100 transition-colors">
-                                    <input type="radio" name="chromebookDomain" value="Standard" class="w-4 h-4 text-blue-600" required>
+                                    <input type="radio" name="chromebookDomain" value="Standard" class="w-4 h-4 text-blue-600">
                                     <span class="ml-3 text-sm text-gray-700 font-medium">교육청 통합 도메인 (@m.jne.go.kr / @e.jne.go.kr / @h.jne.go.kr)</span>
                                 </label>
                                 <label class="flex items-center cursor-pointer p-2 rounded hover:bg-blue-100 transition-colors">
@@ -121,7 +120,7 @@
                 <div id="sectionAndroidSelection" class="step-content">
                     <div class="flex items-center justify-between mb-6 border-b pb-4">
                         <h2 class="text-lg font-bold text-gray-800 tracking-tight">안드로이드 관리 방식 선택</h2>
-                        <button type="button" onclick="goToStep('device')" class="text-xs text-blue-600 font-medium underline">기기 변경</button>
+                        <button type="button" onclick="goToStep('device')" class="text-xs text-blue-600 font-medium underline tracking-tight">기기 변경</button>
                     </div>
                     
                     <div class="space-y-4 mb-8">
@@ -148,13 +147,13 @@
                 <div id="sectionAndroidDetails" class="step-content">
                     <div class="flex items-center justify-between mb-6 border-b pb-4">
                         <h2 id="androidDetailsTitle" class="text-lg font-bold text-gray-800 tracking-tight">안드로이드 상세 신청</h2>
-                        <button type="button" onclick="goToStep('android-selection')" class="text-xs text-blue-600 font-medium underline">방식 변경</button>
+                        <button type="button" onclick="goToStep('android-selection')" class="text-xs text-blue-600 font-medium underline tracking-tight">방식 변경</button>
                     </div>
 
                     <div class="space-y-6">
                         <div id="androidNotice" class="p-4 rounded-lg border">
                             <label class="flex items-start cursor-pointer">
-                                <input type="checkbox" id="agreeAndroid" class="mt-1 w-4 h-4 rounded" required>
+                                <input type="checkbox" id="agreeAndroid" class="mt-1 w-4 h-4 rounded">
                                 <span id="agreeAndroidText" class="ml-3 text-sm leading-relaxed font-medium text-gray-700"></span>
                             </label>
                         </div>
@@ -196,9 +195,9 @@
                 <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6 text-green-600">
                     <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                <h2 class="text-2xl font-bold text-gray-900 mb-3">신청이 완료되었습니다</h2>
-                <p class="text-gray-600 mb-10 text-sm leading-relaxed">아이모두 Google 관리자가 확인 후<br>기재하신 연락처로 안내해 드리겠습니다.</p>
-                <button type="button" onclick="location.reload()" class="bg-gray-100 text-gray-600 px-8 py-3 rounded-xl font-bold hover:bg-gray-200 transition-all">다시 신청하기</button>
+                <h2 class="text-2xl font-bold text-gray-900 mb-3 tracking-tight">신청이 완료되었습니다</h2>
+                <p class="text-gray-600 mb-10 text-sm leading-relaxed tracking-tight">아이모두 Google 관리자가 확인 후<br>기재하신 연락처로 안내해 드리겠습니다.</p>
+                <button type="button" onclick="location.reload()" class="bg-gray-100 text-gray-600 px-8 py-3 rounded-xl font-bold hover:bg-gray-200 transition-all tracking-tight">다시 신청하기</button>
             </div>
         </div>
     </div>
@@ -280,38 +279,58 @@
 
         document.getElementById('surveyForm').onsubmit = function(e) {
             e.preventDefault();
-            const activeSection = document.querySelector('.step-content.active').id;
+            
+            // 폼 제출 로직 개선: 선택된 기기에 따라 데이터 수집 대상을 명확히 분리
             let payload = { deviceType: selectedDevice };
             let activeBtn = null;
 
-            if (activeSection === 'sectionChromebook') {
+            if (selectedDevice === 'Chromebook') {
                 const domainOption = document.querySelector('input[name="chromebookDomain"]:checked');
                 if (!domainOption) return showMessage("도메인 유형을 선택해 주세요.");
                 
+                const school = document.getElementById('schoolChrome');
+                const name = document.getElementById('nameChrome');
+                const phone = document.getElementById('phoneChrome');
+                const count = document.getElementById('countChrome');
+
+                if (!school.value || !name.value || !phone.value || !count.value) {
+                    return showMessage("✍️ 모든 필수 항목을 입력해 주세요.");
+                }
+
                 payload.policy = 'Chromebook Standard';
                 payload.domainType = domainOption.value === 'Standard' ? '전남교육청 통합' : '학교 자체';
-                payload.schoolName = document.getElementById('schoolChrome').value;
-                payload.teacherName = document.getElementById('nameChrome').value;
-                payload.phoneNumber = document.getElementById('phoneChrome').value;
-                payload.deviceCount = document.getElementById('countChrome').value;
+                payload.schoolName = school.value;
+                payload.teacherName = name.value;
+                payload.phoneNumber = phone.value;
+                payload.deviceCount = count.value;
                 payload.agreement = 'Domain Checked';
                 payload.additionalApps = "-";
                 activeBtn = document.getElementById('submitBtnChrome');
-            } else {
-                if (!document.getElementById('agreeAndroid').checked) return showMessage("동의 체크가 필요합니다.");
+            } else if (selectedDevice === 'Android') {
+                const agree = document.getElementById('agreeAndroid');
+                if (!agree || !agree.checked) return showMessage("동의 체크가 필요합니다.");
+                
+                const school = document.getElementById('schoolAndroid');
+                const name = document.getElementById('nameAndroid');
+                const phone = document.getElementById('phoneAndroid');
+                const count = document.getElementById('countAndroid');
+                const apps = document.getElementById('appsAndroid');
+
+                if (!school.value || !name.value || !phone.value || !count.value) {
+                    return showMessage("✍️ 모든 필수 항목을 입력해 주세요.");
+                }
+
                 payload.policy = currentAndroidPolicy;
                 payload.domainType = "-";
-                payload.schoolName = document.getElementById('schoolAndroid').value;
-                payload.teacherName = document.getElementById('nameAndroid').value;
-                payload.phoneNumber = document.getElementById('phoneAndroid').value;
-                payload.deviceCount = document.getElementById('countAndroid').value;
+                payload.schoolName = school.value;
+                payload.teacherName = name.value;
+                payload.phoneNumber = phone.value;
+                payload.deviceCount = count.value;
                 payload.agreement = 'Policy Agreed';
-                payload.additionalApps = currentAndroidPolicy === 'Option B' ? document.getElementById('appsAndroid').value : "-";
+                payload.additionalApps = currentAndroidPolicy === 'Option B' ? apps.value : "-";
                 activeBtn = document.getElementById('submitBtnAndroid');
-            }
-
-            if (!payload.schoolName || !payload.teacherName || !payload.phoneNumber || !payload.deviceCount) {
-                return showMessage("✍️ 모든 필수 항목을 입력해 주세요.");
+            } else {
+                return showMessage("⚠️ 기기 선택 단계부터 다시 진행해 주세요.");
             }
 
             const originalText = activeBtn.innerText;
@@ -322,8 +341,11 @@
             for (const key in payload) params.append(key, payload[key]);
 
             fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
-            .then(() => goToStep('success'))
-            .catch(() => {
+            .then(() => {
+                goToStep('success');
+            })
+            .catch(error => {
+                console.error('Submission Error:', error);
                 showMessage("❌ 전송 오류가 발생했습니다.");
                 activeBtn.disabled = false;
                 activeBtn.innerText = originalText;
