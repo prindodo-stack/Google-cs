@@ -124,6 +124,7 @@
                     </div>
                     
                     <div class="space-y-5 mb-8">
+                        <!-- 집중형 A -->
                         <label class="relative block group cursor-pointer">
                             <input type="radio" name="policy" value="집중형 A" class="peer absolute opacity-0">
                             <div class="p-6 border-2 border-gray-100 rounded-xl peer-checked:border-red-500 peer-checked:bg-red-50 transition-all hover:border-blue-200 shadow-sm">
@@ -131,8 +132,8 @@
                                     <h3 class="font-bold text-lg">집중형 A. 중앙 관리</h3>
                                     <span class="text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">보안/통제 중심</span>
                                 </div>
-                                <div class="space-y-2 text-gray-600">
-                                    <p class="text-xs leading-relaxed">학교 차원에서 기기를 강력하게 통제하고 학습 전용으로 고정하는 방식입니다.</p>
+                                <div class="space-y-2 text-gray-600 text-xs">
+                                    <p class="leading-relaxed">학교 차원에서 기기를 강력하게 통제하고 학습 전용으로 고정하는 방식입니다.</p>
                                     <ul class="text-[11px] space-y-1 ml-1">
                                         <li class="flex items-start"><span class="text-green-600 mr-1">✔</span> <strong>화이트리스트:</strong> 관리자가 승인한 앱만 노출</li>
                                         <li class="flex items-start"><span class="text-green-600 mr-1">✔</span> <strong>원격 배포:</strong> 필수 앱 자동 설치</li>
@@ -142,6 +143,7 @@
                             </div>
                         </label>
 
+                        <!-- 개방형 B -->
                         <label class="relative block group cursor-pointer">
                             <input type="radio" name="policy" value="개방형 B" class="peer absolute opacity-0">
                             <div class="p-6 border-2 border-gray-100 rounded-xl peer-checked:border-blue-500 peer-checked:bg-blue-50 transition-all hover:border-blue-200 shadow-sm">
@@ -149,8 +151,8 @@
                                     <h3 class="font-bold text-lg">개방형 B. 자율 관리</h3>
                                     <span class="text-[10px] font-bold text-blue-600 bg-blue-100 px-2 py-1 rounded">편의성 중심</span>
                                 </div>
-                                <div class="space-y-2 text-gray-600">
-                                    <p class="text-xs leading-relaxed">학생의 자율성을 존중하며 기기 설정을 최소화하는 방식입니다.</p>
+                                <div class="space-y-2 text-gray-600 text-xs">
+                                    <p class="leading-relaxed">학생의 자율성을 존중하며 기기 설정을 최소화하는 방식입니다.</p>
                                     <ul class="text-[11px] space-y-1 ml-1">
                                         <li class="flex items-start"><span class="text-blue-500 mr-1">✔</span> <strong>기기 초기화 불필요:</strong> 현재 상태 그대로 즉시 적용</li>
                                         <li class="flex items-start"><span class="text-blue-500 mr-1">✔</span> <strong>자유 설치:</strong> 모든 앱 직접 검색 및 설치 가능</li>
@@ -222,16 +224,18 @@
                 <div id="searchResult" class="hidden mt-6 p-6 rounded-xl border-2 border-blue-100 bg-blue-50/30"></div>
             </div>
 
+            <!-- 관리자 인증 -->
             <div id="sectionAdminAuth" class="step-content text-center py-12">
                 <h2 class="text-xl font-bold mb-6 text-gray-800">관리자 인증</h2>
                 <input type="password" id="adminPw" class="w-48 p-3 border rounded-xl text-center text-2xl tracking-widest mb-6 focus:ring-2 focus:ring-blue-500 outline-none" maxlength="4" placeholder="****">
                 <div class="flex gap-2 justify-center"><button onclick="goToStep('device')" class="px-6 py-3 bg-gray-200 rounded-xl font-bold">취소</button><button onclick="checkAdminAuth()" class="px-6 py-3 bg-blue-700 text-white rounded-xl font-bold">확인</button></div>
             </div>
 
+            <!-- 성공 화면 -->
             <div id="successSection" class="step-content text-center py-12">
                 <div class="text-green-600 text-5xl mb-6">✔</div>
                 <h2 class="text-2xl font-bold mb-3 tracking-tight">신청이 완료되었습니다</h2>
-                <p class="text-sm text-gray-500 mb-8 font-medium">관리자 확인 후 기재하신 연락처로 안내드립니다.</p>
+                <p class="text-sm text-gray-500 mb-8 font-medium">담당자 확인 후 기재하신 연락처로 안내드립니다.</p>
                 <button type="button" onclick="resetAndGoToApply()" class="bg-gray-100 text-gray-600 px-8 py-3 rounded-xl font-bold">처음으로 돌아가기</button>
             </div>
         </div>
@@ -242,12 +246,12 @@
         <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
             <div class="bg-indigo-700 p-6 text-white flex justify-between items-center">
                 <div><h2 class="text-xl font-bold">아이모두 관리자 대시보드</h2><p class="text-xs text-indigo-200 mt-1">접수 내역 실시간 관리</p></div>
-                <button onclick="resetAndGoToApply()" class="text-sm bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-800">로그아웃</button>
+                <button onclick="resetAndGoToApply()" class="text-sm bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-800 transition-colors">로그아웃</button>
             </div>
             <div class="p-6 overflow-x-auto">
                 <table class="w-full text-sm text-left border-collapse">
                     <thead class="bg-gray-50 text-gray-600 font-bold border-b">
-                        <tr><th class="p-4">접수일시</th><th class="p-4">학교 및 담당자</th><th class="p-4">기기/수량</th><th class="p-4 text-center">처리상태</th><th class="p-4 text-center">기능</th></tr>
+                        <tr><th class="p-4 whitespace-nowrap">접수일시</th><th class="p-4">학교 및 담당자</th><th class="p-4">기기/수량</th><th class="p-4 text-center">처리상태</th><th class="p-4 text-center">기능</th></tr>
                     </thead>
                     <tbody id="adminTableBody" class="divide-y divide-gray-100"></tbody>
                 </table>
@@ -258,8 +262,8 @@
     <div id="messageBox" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-8 py-4 rounded-2xl shadow-2xl opacity-0 transition-all pointer-events-none z-[200] text-sm"><span id="messageText"></span></div>
 
     <script>
-        // 새로운 배포 URL 적용
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwb2EmyTU4T0CY94aJTcu-Mohc7yfHOnDaRRd8i3Wlv47s1mdxG2ZJOtEddRf74YUSM/exec'; 
+        // 요청하신 새로운 백엔드 URL 적용
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzTPhKihkxvPqMV0Rdo1B7lMEAccUPSWNuIsxfA1rLPcfRVSJgwrj--gbxoKhP6bRua/exec'; 
         let selectedDevice = '', currentAndroidPolicy = '';
 
         function formatPhoneNumber(input) {
@@ -340,7 +344,7 @@
                 const res = await fetch(`${scriptURL}?action=adminFetch`);
                 const data = await res.json();
                 tbody.innerHTML = data.map(r => `
-                    <tr class="hover:bg-gray-50"><td class="p-4 text-xs text-gray-400 font-mono">${r.date}</td><td class="p-4"><div class="font-bold text-gray-900">${r.school}</div><div class="text-xs text-gray-500">${r.name} · ${r.phone}</div></td><td class="p-4"><div class="text-xs font-semibold">${r.device}</div><div class="text-[11px] text-indigo-600">${r.policy} (${r.count}대)</div></td><td class="p-4 text-center"><span class="status-badge px-3 py-1.5 rounded-full text-[10px] font-bold ${r.status === '완료' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}">${r.status}</span></td><td class="p-4"><div class="flex flex-col gap-1">${r.file !== '-' ? `<a href="${r.file}" target="_blank" class="text-center text-[10px] py-1.5 bg-gray-100 border rounded font-bold hover:bg-gray-200">서류확인</a>` : ''}${r.status !== '완료' ? `<button onclick="window.handleStatusUpdate(this, ${r.row}, '완료')" class="text-[10px] py-1.5 bg-indigo-600 text-white rounded font-bold shadow-sm">완료처리</button>` : ''}</div></td></tr>
+                    <tr class="hover:bg-gray-50"><td class="p-4 text-xs text-gray-400 font-mono">${r.date}</td><td class="p-4"><div class="font-bold text-gray-900">${r.school}</div><div class="text-xs text-gray-500">${r.name} · ${r.phone}</div></td><td class="p-4"><div class="text-xs font-semibold">${r.device}</div><div class="text-[11px] text-indigo-600">${r.policy} (${r.count}대)</div></td><td class="p-4 text-center"><span class="status-badge px-3 py-1.5 rounded-full text-[10px] font-bold ${r.status === '완료' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}">${r.status}</span></td><td class="p-4"><div class="flex flex-col gap-1">${r.file !== '-' ? `<a href="${r.file}" target="_blank" class="text-center text-[10px] py-1.5 bg-gray-100 border rounded font-bold hover:bg-gray-200 transition-colors">서류확인</a>` : ''}${r.status !== '완료' ? `<button onclick="window.handleStatusUpdate(this, ${r.row}, '완료')" class="text-[10px] py-1.5 bg-indigo-600 text-white rounded font-bold shadow-sm transition-all">완료처리</button>` : ''}</div></td></tr>
                 `).join('');
             } catch(e) { tbody.innerHTML = '<tr><td colspan="5" class="p-12 text-center text-red-500">데이터 로딩 실패</td></tr>'; }
         }
@@ -380,6 +384,7 @@
                 if(currentAndroidPolicy === '개방형 B' && (!fileInput || fileInput.files.length === 0)) return showMessage("📄 신청서 PDF 첨부가 필수입니다.");
             }
             if (!payload.schoolName || !payload.teacherName || !payload.phoneNumber || !payload.deviceCount) return showMessage("✍️ 모든 항목을 입력하세요.");
+            
             const sendData = async (fileBase64 = null, fName = null) => {
                 activeBtn.disabled = true; activeBtn.innerHTML = `<span class="loading-spinner"></span>전송 중...`;
                 if (fileBase64) { payload.fileData = fileBase64; payload.fileName = fName; }
@@ -387,11 +392,13 @@
                 for (const k in payload) params.append(k, payload[k]);
                 try {
                     await fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
-                    goToStep('success');
+                    setTimeout(() => goToStep('success'), 1200);
                 } catch (error) { showMessage("❌ 전송 오류"); activeBtn.disabled = false; activeBtn.innerText = "신청 완료"; }
             };
+
             if (fileInput && fileInput.files.length > 0) {
-                const f = fileInput.files[0], reader = new FileReader();
+                const f = fileInput.files[0];
+                const reader = new FileReader();
                 reader.onload = function(e) { sendData(e.target.result.split(',')[1], f.name); };
                 reader.readAsDataURL(f);
             } else sendData();
