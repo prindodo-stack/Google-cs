@@ -61,7 +61,7 @@
             </div>
             <p class="text-blue-100 text-sm leading-relaxed">학교 담당자가 <strong>아이모두 Google 관리자</strong>에게 기기 관리 정책 적용을 요청하는 시스템입니다.</p>
             <div class="flex justify-between items-center mt-4">
-                <button onclick="goToStep('admin-auth')" class="text-[10px] text-blue-300 hover:text-white underline">관리자 모드</button>
+                <button onclick="goToStep('adminAuth')" class="text-[10px] text-blue-300 hover:text-white underline">관리자 모드</button>
                 <p class="text-blue-200 text-[11px] opacity-90 font-medium">Made by 교육연구사 이정도</p>
             </div>
         </div>
@@ -79,7 +79,7 @@
                         <h2 class="text-lg font-bold text-gray-800">STEP 1. 관리 대상 기기 선택</h2>
                         <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">필수 선택</span>
                     </div>
-                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">운영 중이거나 정책 지원을 받고자 하는 기기 유형을 선택해 주세요.</p>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">현재 학교에서 운영 중인 기기 유형을 선택해 주세요.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <label class="relative block cursor-pointer group">
                             <input type="radio" name="deviceType" value="Chromebook" class="peer absolute opacity-0">
@@ -99,65 +99,81 @@
                     <button type="button" onclick="handleDeviceSelection()" class="w-full bg-blue-700 text-white py-4 rounded-xl font-bold shadow-lg">다음 단계로 이동</button>
                 </div>
 
-                <!-- 상세 입력 단계 (기존 유지) -->
+                <!-- 크롬북 섹션 -->
                 <div id="sectionChromebook" class="step-content">
                     <div class="flex items-center justify-between mb-6 border-b pb-4"><h2 class="text-lg font-bold text-gray-800">크롬북 신청 정보 입력</h2><button type="button" onclick="goToStep('device')" class="text-xs text-blue-600 underline">기기 변경</button></div>
                     <div class="space-y-6">
-                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-100 text-xs"><p class="font-bold text-blue-800 mb-2">기존 등록 계정 도메인</p>
-                        <label class="flex items-center mb-2"><input type="radio" name="chromebookDomain" value="Standard" class="mr-2">교육청 통합 (@m/e/h.jne.go.kr)</label>
-                        <label class="flex items-center"><input type="radio" name="chromebookDomain" value="SchoolSpecific" class="mr-2">학교 자체 도메인</label></div>
+                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-100 text-xs">
+                            <p class="font-bold text-blue-800 mb-2">기존 기기 등록 계정 도메인 선택</p>
+                            <label class="flex items-center mb-2"><input type="radio" name="chromebookDomain" value="Standard" class="mr-2">교육청 통합 도메인 (@m/e/h.jne.go.kr)</label>
+                            <label class="flex items-center"><input type="radio" name="chromebookDomain" value="SchoolSpecific" class="mr-2">학교 자체 도메인 (예: @dysb.ms.jne.kr)</label>
+                        </div>
                         <input type="text" id="schoolChrome" class="w-full p-3 border rounded-xl" placeholder="학교명">
                         <input type="text" id="nameChrome" class="w-full p-3 border rounded-xl" placeholder="담당자 성함">
                         <input type="tel" id="phoneChrome" oninput="formatPhoneNumber(this)" class="w-full p-3 border rounded-xl" placeholder="전화번호">
-                        <input type="number" id="countChrome" class="w-full p-3 border rounded-xl" placeholder="수량">
+                        <input type="number" id="countChrome" class="w-full p-3 border rounded-xl" placeholder="등록 대수">
                         <button type="submit" id="submitBtnChrome" class="w-full bg-blue-700 text-white py-4 rounded-xl font-bold">신청 완료</button>
                     </div>
                 </div>
 
+                <!-- 안드로이드 방식 선택 -->
                 <div id="sectionAndroidSelection" class="step-content">
-                    <div class="flex items-center justify-between mb-6 border-b pb-4"><h2 class="text-lg font-bold text-gray-800">방식 선택</h2><button type="button" onclick="goToStep('device')" class="text-xs text-blue-600 underline">기기 변경</button></div>
+                    <div class="flex items-center justify-between mb-6 border-b pb-4"><h2 class="text-lg font-bold text-gray-800">안드로이드 방식 선택</h2><button type="button" onclick="goToStep('device')" class="text-xs text-blue-600 underline">기기 변경</button></div>
                     <div class="space-y-4 mb-8">
                         <label class="block p-4 border-2 rounded-xl cursor-pointer"><input type="radio" name="policy" value="집중형 A" class="mr-2"><strong>집중형 A. 중앙 관리</strong> (초기화 필수)</label>
                         <label class="block p-4 border-2 rounded-xl cursor-pointer"><input type="radio" name="policy" value="개방형 B" class="mr-2"><strong>개방형 B. 자율 관리</strong> (초기화 불필요)</label>
                     </div>
-                    <button type="button" onclick="handleAndroidPolicySelection()" class="w-full bg-blue-700 text-white py-4 rounded-xl font-bold">다음 단계</button>
+                    <button type="button" onclick="handleAndroidPolicySelection()" class="w-full bg-blue-700 text-white py-4 rounded-xl font-bold">신청 정보 작성하기</button>
                 </div>
 
+                <!-- 안드로이드 상세 입력 -->
                 <div id="sectionAndroidDetails" class="step-content">
-                    <div class="flex items-center justify-between mb-6 border-b pb-4"><h2 id="androidDetailsTitle" class="text-lg font-bold text-gray-800">상세 입력</h2><button type="button" onclick="goToStep('android-selection')" class="text-xs text-blue-600 underline">방식 변경</button></div>
-                    <div id="androidASummary" class="hidden p-4 bg-red-50 text-xs text-red-800 rounded-xl mb-4">• 승인된 앱만 사용 가능하며 초기화가 필수입니다.</div>
-                    <div id="androidBSummary" class="hidden p-4 bg-blue-50 text-xs text-blue-800 rounded-xl mb-4">• 자율 설치 방식이며 신청서를 반드시 첨부하세요.</div>
+                    <div class="flex items-center justify-between mb-6 border-b pb-4"><h2 id="androidDetailsTitle" class="text-lg font-bold text-gray-800">상세 정보 입력</h2><button type="button" onclick="goToStep('androidSelection')" class="text-xs text-blue-600 underline">방식 변경</button></div>
+                    <div id="androidASummary" class="hidden p-4 bg-red-50 text-xs text-red-800 border-l-4 border-red-500 rounded-r-xl mb-4">
+                        <p>1. 관리자가 승인한 앱만 사용 가능하며 모든 기기는 공장 초기화가 필수입니다.</p>
+                        <p>2. 유해물 차단 및 원격 앱 배포 기능이 포함됩니다.</p>
+                    </div>
+                    <div id="androidBSummary" class="hidden p-4 bg-blue-50 text-xs text-blue-800 border-l-4 border-blue-500 rounded-r-xl mb-4">
+                        <p>1. 자율 설치가 가능하며 초기화가 불필요하나 학교의 지도 책임이 큽니다.</p>
+                        <p>2. 하단에 스캔된 신청서 PDF를 반드시 업로드해 주세요.</p>
+                    </div>
                     <div class="space-y-4">
                         <div class="p-3 border rounded bg-gray-50 text-xs"><label><input type="checkbox" id="agreeAndroid" class="mr-2"><span id="agreeAndroidText"></span></label></div>
                         <input type="text" id="schoolAndroid" class="w-full p-3 border rounded-xl" placeholder="학교명">
-                        <input type="text" id="nameAndroid" class="w-full p-3 border rounded-xl" placeholder="성함">
-                        <input type="tel" id="phoneAndroid" oninput="formatPhoneNumber(this)" class="w-full p-3 border rounded-xl" placeholder="연락처">
+                        <input type="text" id="nameAndroid" class="w-full p-3 border rounded-xl" placeholder="담당자 성함">
+                        <input type="tel" id="phoneAndroid" oninput="formatPhoneNumber(this)" class="w-full p-3 border rounded-xl" placeholder="전화번호">
                         <input type="number" id="countAndroid" class="w-full p-3 border rounded-xl" placeholder="대수">
                         <div id="androidFileContainer" class="p-4 border-2 border-dashed rounded-xl text-center"><p class="text-xs mb-2">신청서 PDF 업로드 (필수)</p><input type="file" id="fileAndroid" accept="application/pdf"></div>
-                        <div id="androidExtraField" class="hidden"><textarea id="appsAndroid" class="w-full p-3 border rounded-xl text-sm" placeholder="희망 앱 리스트"></textarea></div>
-                        <button type="submit" id="submitBtnAndroid" class="w-full bg-blue-700 text-white py-4 rounded-xl font-bold shadow-md">신청 완료</button>
+                        <div id="androidExtraField" class="hidden"><textarea id="appsAndroid" class="w-full p-3 border rounded-xl text-sm h-24" placeholder="배포 희망 앱 리스트"></textarea></div>
+                        <button type="submit" id="submitBtnAndroid" class="w-full bg-blue-700 text-white py-4 rounded-xl font-bold">신청 완료</button>
                     </div>
                 </div>
             </form>
 
+            <!-- 결과 조회 페이지 -->
             <div id="sectionSearch" class="step-content">
                 <div class="flex items-center justify-between mb-6 border-b pb-4"><h2 class="text-lg font-bold text-gray-800">신청 결과 조회</h2><button type="button" onclick="goToStep('device')" class="text-xs text-blue-600">돌아가기</button></div>
-                <input type="text" id="searchName" class="w-full p-3 border rounded-xl mb-3" placeholder="담당자 성함">
-                <input type="tel" id="searchPhone" oninput="formatPhoneNumber(this)" class="w-full p-3 border rounded-xl mb-6" placeholder="전화번호">
-                <button onclick="searchApplication()" id="searchBtn" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold">조회하기</button>
+                <div class="space-y-4">
+                    <input type="text" id="searchName" class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500" placeholder="담당자 성함">
+                    <input type="tel" id="searchPhone" oninput="formatPhoneNumber(this)" class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500" placeholder="전화번호">
+                    <button onclick="searchApplication()" id="searchBtn" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold shadow-md">조회하기</button>
+                </div>
                 <div id="searchResult" class="hidden mt-6 p-6 rounded-xl border-2 border-blue-100 bg-blue-50/30"></div>
             </div>
 
+            <!-- 관리자 인증 -->
             <div id="sectionAdminAuth" class="step-content text-center py-12">
                 <h2 class="text-xl font-bold mb-6">관리자 인증</h2>
                 <input type="password" id="adminPw" class="w-48 p-3 border rounded-xl text-center text-2xl tracking-widest mb-6" maxlength="4" placeholder="****">
                 <div class="flex gap-2 justify-center"><button onclick="goToStep('device')" class="px-6 py-3 bg-gray-200 rounded-xl font-bold">취소</button><button onclick="checkAdminAuth()" class="px-6 py-3 bg-blue-700 text-white rounded-xl font-bold">확인</button></div>
             </div>
 
+            <!-- 성공 메시지 -->
             <div id="successSection" class="step-content text-center py-12">
                 <div class="text-green-600 text-5xl mb-6">✔</div>
-                <h2 class="text-2xl font-bold mb-3">신청 완료</h2>
-                <button type="button" onclick="resetAndGoToApply()" class="bg-gray-100 text-gray-600 px-8 py-3 rounded-xl font-bold">처음으로</button>
+                <h2 class="text-2xl font-bold mb-3">신청이 완료되었습니다</h2>
+                <p class="text-sm text-gray-500 mb-8">담당자가 확인 후 연락처로 안내드리겠습니다.</p>
+                <button type="button" onclick="resetAndGoToApply()" class="bg-gray-100 text-gray-600 px-8 py-3 rounded-xl font-bold">처음으로 돌아가기</button>
             </div>
         </div>
     </div>
@@ -166,18 +182,18 @@
     <div id="sectionAdminDash" class="step-content max-w-6xl mx-auto">
         <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
             <div class="bg-indigo-700 p-6 text-white flex justify-between items-center">
-                <div><h2 class="text-xl font-bold">아이모두 관리자 대시보드</h2><p class="text-xs text-indigo-200 mt-1">접수 현황 관리 및 완료 처리</p></div>
+                <div><h2 class="text-xl font-bold">아이모두 관리자 대시보드</h2><p class="text-xs text-indigo-200 mt-1">접수 내역 실시간 관리</p></div>
                 <button onclick="resetAndGoToApply()" class="text-sm bg-indigo-600 px-4 py-2 rounded-lg">로그아웃</button>
             </div>
             <div class="p-6 overflow-x-auto">
                 <table class="w-full text-sm text-left border-collapse">
                     <thead class="bg-gray-50 text-gray-600 font-bold border-b">
                         <tr>
-                            <th class="p-4 whitespace-nowrap">접수일시</th>
-                            <th class="p-4">학교 및 담당자 정보</th>
-                            <th class="p-4">기기/방식 (대수)</th>
+                            <th class="p-4">접수일시</th>
+                            <th class="p-4">학교 및 담당자</th>
+                            <th class="p-4">기기/수량</th>
                             <th class="p-4 text-center">처리상태</th>
-                            <th class="p-4 text-center">관리기능</th>
+                            <th class="p-4 text-center">기능</th>
                         </tr>
                     </thead>
                     <tbody id="adminTableBody" class="divide-y divide-gray-100"></tbody>
@@ -190,7 +206,6 @@
 
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbw-rzQxHAY9uGDLsBUZX6oZ_-CP8WRgr3OM4eH8-Rz2CiMt823tVmI8FsEYsUhSNtdQ/exec'; 
-
         let selectedDevice = '', currentAndroidPolicy = '';
 
         function formatPhoneNumber(input) {
@@ -205,41 +220,55 @@
             else { bApply.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all nav-btn-inactive hover:bg-gray-200"; bSearch.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all nav-btn-search-active"; }
         }
 
-        function resetAndGoToApply() {
-            document.getElementById('surveyForm').reset();
-            document.getElementById('mainContainer').classList.remove('hidden');
-            goToStep('device');
-        }
-
         function goToStep(step) {
             document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
-            if (step === 'admin-dash') { document.getElementById('mainContainer').classList.add('hidden'); document.getElementById('sectionAdminDash').classList.add('active'); }
-            else if (step === 'admin-auth') { document.getElementById('sectionAdminAuth').classList.add('active'); }
-            else if (step === 'search') { document.getElementById('sectionSearch').classList.add('active'); updateNavUI('search'); }
-            else { document.getElementById('mainContainer').classList.remove('hidden'); document.getElementById('section' + step.charAt(0).toUpperCase() + step.slice(1)).classList.add('active'); updateNavUI('apply'); }
+            // ID 매핑 테이블 (버그 방지)
+            const idMap = {
+                'device': 'sectionDevice',
+                'chromebook': 'sectionChromebook',
+                'androidSelection': 'sectionAndroidSelection',
+                'androidDetails': 'sectionAndroidDetails',
+                'search': 'sectionSearch',
+                'adminAuth': 'sectionAdminAuth',
+                'adminDash': 'sectionAdminDash',
+                'success': 'successSection'
+            };
+            const targetId = idMap[step];
+            const targetEl = document.getElementById(targetId);
+            
+            if (step === 'adminDash') { document.getElementById('mainContainer').classList.add('hidden'); }
+            else { document.getElementById('mainContainer').classList.remove('hidden'); }
+            
+            if (targetEl) targetEl.classList.add('active');
+            updateNavUI(step === 'search' ? 'search' : 'apply');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetAndGoToApply() {
+            document.getElementById('surveyForm').reset();
+            goToStep('device');
         }
 
         function handleDeviceSelection() {
             const types = document.getElementsByName('deviceType');
-            for (const t of types) { if (t.checked) { selectedDevice = t.value; if (selectedDevice === 'Chromebook') goToStep('chromebook'); else goToStep('android-selection'); return; } }
+            for (const t of types) { if (t.checked) { selectedDevice = t.value; goToStep(selectedDevice === 'Chromebook' ? 'chromebook' : 'androidSelection'); return; } }
             showMessage("⚠️ 기기를 선택해 주세요.");
         }
 
         function handleAndroidPolicySelection() {
             const policies = document.getElementsByName('policy');
-            for (const p of policies) { if (p.checked) { currentAndroidPolicy = p.value; if (currentAndroidPolicy === '개방형 B') document.getElementById('modalB').classList.add('active'); else { setupAndroidDetails(currentAndroidPolicy); goToStep('android-details'); } return; } }
+            for (const p of policies) { if (p.checked) { currentAndroidPolicy = p.value; if (currentAndroidPolicy === '개방형 B') document.getElementById('modalB').classList.add('active'); else { setupAndroidDetails(currentAndroidPolicy); goToStep('androidDetails'); } return; } }
             showMessage("⚠️ 방식을 선택해 주세요.");
         }
 
-        function confirmAndProceedB() { document.getElementById('modalB').classList.remove('active'); setupAndroidDetails('개방형 B'); goToStep('android-details'); }
+        function confirmAndProceedB() { document.getElementById('modalB').classList.remove('active'); setupAndroidDetails('개방형 B'); goToStep('androidDetails'); }
         function closeModalB() { document.getElementById('modalB').classList.remove('active'); }
 
         function setupAndroidDetails(policy) {
             const agreeText = document.getElementById('agreeAndroidText');
             if (policy === '집중형 A') {
                 document.getElementById('androidDetailsTitle').innerText = "집중형 A. 신청 정보 입력";
-                agreeText.innerHTML = "중앙 관리를 위한 기기 공장 초기화에 동의합니다.";
+                agreeText.innerHTML = "중앙 관리를 위한 <strong>기기 공장 초기화</strong>에 동의합니다.";
                 document.getElementById('androidASummary').classList.remove('hidden'); document.getElementById('androidBSummary').classList.add('hidden'); document.getElementById('androidFileContainer').classList.add('hidden'); document.getElementById('androidExtraField').classList.remove('hidden');
             } else {
                 document.getElementById('androidDetailsTitle').innerText = "개방형 B. 신청 정보 입력";
@@ -253,76 +282,47 @@
             else { showMessage("❌ 비밀번호가 틀렸습니다."); document.getElementById('adminPw').value = ''; }
         }
 
-        // 상태 업데이트 실행 함수 (반응성 강화)
         window.handleStatusUpdate = async function(btn, row, status) {
-            if(!confirm(`신청건을 '${status}' 상태로 변경하시겠습니까?`)) return;
-            
-            const rowElement = btn.closest('tr');
-            const badge = rowElement.querySelector('.status-badge');
-            const originalHTML = btn.innerHTML;
-            
-            btn.disabled = true;
-            btn.innerHTML = `<span class="loading-spinner" style="width:12px; height:12px"></span>`;
-
+            if(!confirm(`해당 신청을 '${status}' 처리하시겠습니까?`)) return;
+            const badge = btn.closest('tr').querySelector('.status-badge');
+            btn.disabled = true; btn.innerHTML = `...`;
             try {
-                // 백엔드 URL 구성 (row는 시트의 행 번호)
-                const updateUrl = `${scriptURL}?action=updateStatus&row=${row}&status=${encodeURIComponent(status)}`;
-                
-                // no-cors를 쓰면 응답 본문을 읽을 수 없지만 요청은 서버로 날아갑니다.
-                await fetch(updateUrl, { mode: 'no-cors' });
-                
-                // 시각적으로 즉시 반영하여 사용자에게 피드백 제공
-                showMessage("✅ " + status + " 처리가 완료되었습니다.");
+                await fetch(`${scriptURL}?action=updateStatus&row=${row}&status=${encodeURIComponent(status)}`, { mode: 'no-cors' });
+                showMessage("✅ 처리 요청 완료");
                 if (badge) {
                     badge.innerText = status;
                     badge.className = "status-badge px-3 py-1.5 rounded-full text-[10px] font-bold bg-green-100 text-green-700";
                 }
-                btn.remove(); // 완료 버튼 숨김
-            } catch(e) {
-                showMessage("❌ 처리 중 오류 발생");
-                btn.disabled = false;
-                btn.innerHTML = originalHTML;
-            }
+                btn.remove();
+            } catch(e) { showMessage("❌ 오류 발생"); btn.disabled = false; btn.innerText = "완료처리"; }
         }
 
         async function loadAdminData() {
             const tbody = document.getElementById('adminTableBody');
-            tbody.innerHTML = '<tr><td colspan="5" class="p-12 text-center bg-gray-50"><span class="loading-spinner"></span>로딩 중...</td></tr>';
-            goToStep('admin-dash');
+            tbody.innerHTML = '<tr><td colspan="5" class="p-12 text-center">데이터 로딩 중...</td></tr>';
+            goToStep('adminDash');
             try {
                 const res = await fetch(`${scriptURL}?action=adminFetch`);
                 const data = await res.json();
                 tbody.innerHTML = data.map(r => `
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-4 text-gray-400 text-xs whitespace-nowrap">${r.date}</td>
-                        <td class="p-4">
-                            <div class="font-bold text-gray-900 text-base">${r.school}</div>
-                            <div class="text-xs text-gray-500 mt-0.5">${r.name} · <span class="font-mono text-gray-400">${r.phone}</span></div>
-                        </td>
-                        <td class="p-4">
-                            <div class="text-xs font-semibold text-gray-800">${r.device}</div>
-                            <div class="text-[11px] text-indigo-600 font-medium">${r.policy} <span class="text-gray-400">(${r.count}대)</span></div>
-                        </td>
-                        <td class="p-4 text-center">
-                            <span class="status-badge px-3 py-1.5 rounded-full text-[10px] font-bold ${r.status === '완료' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}">
-                                ${r.status}
-                            </span>
-                        </td>
-                        <td class="p-4">
-                            <div class="flex flex-col gap-1.5 min-w-[90px]">
-                                ${r.file !== '-' ? `<a href="${r.file}" target="_blank" class="text-center text-[10px] py-1.5 bg-gray-100 border rounded font-bold hover:bg-gray-200 transition-colors">서류확인</a>` : ''}
-                                ${r.status !== '완료' ? `<button onclick="window.handleStatusUpdate(this, ${r.row}, '완료')" class="text-[10px] py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded font-bold shadow-sm transition-colors">완료처리</button>` : ''}
-                            </div>
-                        </td>
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-4 text-xs text-gray-400 whitespace-nowrap">${r.date}</td>
+                        <td class="p-4"><div class="font-bold text-gray-900">${r.school}</div><div class="text-xs text-gray-500">${r.name} · ${r.phone}</div></td>
+                        <td class="p-4"><div class="text-xs font-semibold">${r.device}</div><div class="text-[11px] text-indigo-600">${r.policy} (${r.count}대)</div></td>
+                        <td class="p-4 text-center"><span class="status-badge px-3 py-1.5 rounded-full text-[10px] font-bold ${r.status === '완료' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}">${r.status}</span></td>
+                        <td class="p-4"><div class="flex flex-col gap-1">
+                                ${r.file !== '-' ? `<a href="${r.file}" target="_blank" class="text-center text-[10px] py-1 bg-gray-100 rounded font-bold">서류확인</a>` : ''}
+                                ${r.status !== '완료' ? `<button onclick="window.handleStatusUpdate(this, ${r.row}, '완료')" class="text-[10px] py-1 bg-indigo-600 text-white rounded font-bold">완료처리</button>` : ''}
+                        </div></td>
                     </tr>
                 `).join('');
-            } catch(e) { tbody.innerHTML = '<tr><td colspan="5" class="p-12 text-center text-red-500">데이터를 불러오는 데 실패했습니다.</td></tr>'; }
+            } catch(e) { tbody.innerHTML = '<tr><td colspan="5" class="p-12 text-center text-red-500">데이터를 가져오지 못했습니다.</td></tr>'; }
         }
 
         async function searchApplication() {
             const name = document.getElementById('searchName').value, phone = document.getElementById('searchPhone').value, resDiv = document.getElementById('searchResult'), btn = document.getElementById('searchBtn');
             if (!name || !phone) return showMessage("정보를 입력하세요.");
-            btn.disabled = true; btn.innerHTML = `<span class="loading-spinner"></span>조회 중...`;
+            btn.disabled = true; btn.innerHTML = `조회 중...`;
             try {
                 const response = await fetch(`${scriptURL}?action=search&name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`);
                 const data = await response.json();
@@ -332,16 +332,16 @@
                         <div class="border-b border-blue-200 pb-4 mb-4"><h4 class="font-bold text-blue-900 text-lg">${data.school}</h4><p class="text-[11px] text-blue-400 font-medium">신청자: ${name} 선생님</p></div>
                         <div class="space-y-4">
                             <div class="grid grid-cols-2 gap-4 text-sm">
-                                <div class="bg-white p-3 rounded-xl border border-blue-50"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1">신청 기기</p><p class="font-bold text-gray-800">${data.device}</p></div>
+                                <div class="bg-white p-3 rounded-xl border border-blue-50"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1">기기 및 대수</p><p class="font-bold text-gray-800">${data.device} (${data.count || '??'}대)</p></div>
                                 <div class="bg-white p-3 rounded-xl border border-blue-50"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1">관리 방식</p><p class="font-bold text-gray-800">${data.policy}</p></div>
                             </div>
                             <div class="bg-white p-4 rounded-xl border border-blue-100 shadow-sm flex justify-between items-center">
-                                <div><p class="text-[10px] text-gray-400 font-bold uppercase mb-1">처리 현황</p><p class="font-bold text-2xl ${data.status === '완료' ? 'text-green-600' : 'text-blue-600'}">${data.status}</p></div>
+                                <div><p class="text-[10px] text-gray-400 font-bold uppercase mb-1">현재 처리 현황</p><p class="font-bold text-2xl ${data.status === '완료' ? 'text-green-600' : 'text-blue-600'}">${data.status}</p></div>
                                 <div class="text-right"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1">신청 일자</p><p class="text-xs text-gray-500 font-medium">${data.date}</p></div>
                             </div>
                         </div>`;
                 } else { resDiv.innerHTML = `<div class="text-center py-8"><p class="text-gray-400 text-sm font-medium">등록된 신청 내역이 없습니다.</p></div>`; }
-            } catch (err) { showMessage("조회 오류"); }
+            } catch (err) { showMessage("조회 중 오류 발생"); }
             finally { btn.disabled = false; btn.innerText = "조회하기"; }
         }
 
@@ -354,13 +354,11 @@
             if (selectedDevice === 'Chromebook') {
                 const dom = document.querySelector('input[name="chromebookDomain"]:checked');
                 if (!dom) return showMessage("도메인을 선택하세요.");
-                payload.policy = '크롬북 표준 관리'; payload.domainType = dom.value === 'Standard' ? '통합' : '자체';
-                payload.schoolName = document.getElementById('schoolChrome').value; payload.teacherName = document.getElementById('nameChrome').value; payload.phoneNumber = document.getElementById('phoneChrome').value; payload.deviceCount = document.getElementById('countChrome').value;
+                payload.policy = '크롬북 표준 관리'; payload.schoolName = document.getElementById('schoolChrome').value; payload.teacherName = document.getElementById('nameChrome').value; payload.phoneNumber = document.getElementById('phoneChrome').value; payload.deviceCount = document.getElementById('countChrome').value;
                 activeBtn = document.getElementById('submitBtnChrome');
             } else {
                 if (!document.getElementById('agreeAndroid').checked) return showMessage("동의가 필요합니다.");
-                payload.policy = currentAndroidPolicy;
-                payload.schoolName = document.getElementById('schoolAndroid').value; payload.teacherName = document.getElementById('nameAndroid').value; payload.phoneNumber = document.getElementById('phoneAndroid').value; payload.deviceCount = document.getElementById('countAndroid').value;
+                payload.policy = currentAndroidPolicy; payload.schoolName = document.getElementById('schoolAndroid').value; payload.teacherName = document.getElementById('nameAndroid').value; payload.phoneNumber = document.getElementById('phoneAndroid').value; payload.deviceCount = document.getElementById('countAndroid').value;
                 payload.additionalApps = currentAndroidPolicy === '집중형 A' ? document.getElementById('appsAndroid').value : "-";
                 fileInput = currentAndroidPolicy === '개방형 B' ? document.getElementById('fileAndroid') : null;
                 activeBtn = document.getElementById('submitBtnAndroid');
@@ -368,7 +366,7 @@
             }
             if (!payload.schoolName || !payload.teacherName || !payload.phoneNumber || !payload.deviceCount) return showMessage("✍️ 모든 항목을 입력하세요.");
             const sendData = async (fileBase64 = null, fName = null) => {
-                activeBtn.disabled = true; activeBtn.innerHTML = `<span class="loading-spinner"></span>전송 중...`;
+                activeBtn.disabled = true; activeBtn.innerHTML = `전송 중...`;
                 if (fileBase64) { payload.fileData = fileBase64; payload.fileName = fName; }
                 const params = new URLSearchParams();
                 for (const k in payload) params.append(k, payload[k]);
