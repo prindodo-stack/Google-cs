@@ -67,14 +67,12 @@
         </div>
 
         <div class="bg-white rounded-b-xl shadow-md p-8">
-            <!-- 네비게이션 -->
             <div id="mainNav" class="flex gap-2 mb-8">
                 <button id="btnNavApply" onclick="resetAndGoToApply()" class="flex-1 py-3 rounded-xl font-bold text-sm transition-all nav-btn-apply-active">신청하기</button>
                 <button id="btnNavSearch" onclick="goToStep('search')" class="flex-1 py-3 rounded-xl font-bold text-sm transition-all nav-btn-inactive">결과 조회</button>
             </div>
 
             <form id="surveyForm">
-                <!-- STEP 1: 기기 선택 -->
                 <div id="sectionDevice" class="step-content active">
                     <div class="flex items-center justify-between mb-4 border-b pb-4 text-left">
                         <h2 class="text-lg font-bold text-gray-800">STEP 1. 관리 대상 선택</h2>
@@ -102,29 +100,23 @@
                     <button type="button" onclick="handleDeviceSelection()" class="w-full bg-blue-700 text-white py-4 rounded-xl font-bold shadow-lg text-lg">다음 단계로 이동</button>
                 </div>
 
-                <!-- 크롬북 상세 정보 -->
                 <div id="sectionChromebook" class="step-content text-left">
                     <div class="flex items-center justify-between mb-6 border-b pb-4"><h2 class="text-lg font-bold text-gray-800">크롬북 신청 정보</h2><button type="button" onclick="goToStep('device')" class="text-xs text-blue-600 underline">기기 변경</button></div>
-                    
                     <div class="mb-6 p-4 bg-blue-50 text-xs text-blue-800 border-l-4 border-blue-500 rounded-r-xl leading-relaxed shadow-sm">
                         <p class="font-bold mb-2">🛠️ 크롬북 관리 서비스 지원 내용</p>
                         <p>1. 기존 학교 크롬북을 관리하던 <strong>CEU 라이선스</strong>가 아이모두 Google로 이전될 수 있도록 기존 Google Workspace에서의 기기 해제 및 재등록 과정을 지원합니다.</p>
                         <p class="mt-1 text-indigo-700">2. 등록 완료 후에는 학교 관리자 계정에서 크롬북을 중앙 제어(앱 설치 및 승인 등 정책 적용)할 수 있게 됩니다.</p>
                     </div>
-
-                    <!-- 크롬북 초기화 동의 박스 -->
                     <div class="p-4 border rounded-xl bg-red-50 text-[11px] shadow-sm mb-6">
                         <label class="flex items-start cursor-pointer text-red-700">
                             <input type="checkbox" id="agreeChrome" class="mt-1 mr-2">
                             <span>관리 서비스 적용을 위해 <strong>기존 크롬북의 초기화(Powerwash)</strong>가 필수임을 확인하였으며, 기기 초기화 및 신규 등록 절차 진행에 동의합니다.</span>
                         </label>
                     </div>
-
                     <div class="space-y-6">
                         <div class="bg-blue-50 p-5 rounded-xl border border-blue-100 text-xs">
                             <p class="font-bold text-blue-800 mb-2">등록 계정 도메인 선택</p>
                             <label class="flex items-center mb-2 cursor-pointer"><input type="radio" name="chromebookDomain" value="Standard" class="mr-2">전남 교육청 통합 도메인 (@m/e/h.jne.go.kr)</label>
-                            <!-- 도메인 예시 수정됨 -->
                             <label class="flex items-center cursor-pointer"><input type="radio" name="chromebookDomain" value="SchoolSpecific" class="mr-2">학교 자체 도메인 (예: @dysb.ms.jne.kr 등)</label>
                         </div>
                         <input type="text" id="schoolChrome" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="학교명">
@@ -143,15 +135,15 @@
                         <label class="relative block group cursor-pointer">
                             <input type="radio" name="policy" value="집중형 A" class="peer absolute opacity-0">
                             <div class="p-6 border-2 border-gray-100 rounded-xl peer-checked:border-red-500 peer-checked:bg-red-50 transition-all hover:border-blue-200 shadow-sm">
-                                <div class="flex items-center justify-between mb-3 text-gray-900">
+                                <div class="flex items-center justify-between mb-3 text-gray-900 text-left">
                                     <h3 class="font-bold text-lg">집중형 A. 중앙 관리</h3>
                                     <span class="text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">보안/통제 중심</span>
                                 </div>
                                 <div class="space-y-2 text-gray-600 text-xs">
                                     <p class="leading-relaxed text-left">학교 차원에서 기기를 강력하게 통제하고 학습 전용으로 고정하는 방식입니다.</p>
                                     <ul class="text-[11px] space-y-1 ml-1 font-medium text-left">
-                                        <li class="flex items-start"><span class="text-green-600 mr-1 font-bold">✔</span> 화이트리스트: 승인된 앱만 노출/설치 가능</li>
-                                        <li class="flex items-start"><span class="text-green-600 mr-1 font-bold">✔</span> 원격 배포: 수업 앱 중앙 자동 설치</li>
+                                        <li class="flex items-start"><span class="text-green-600 mr-1">✔</span> 화이트리스트: 승인된 앱만 노출/설치 가능</li>
+                                        <li class="flex items-start"><span class="text-green-600 mr-1">✔</span> 원격 배포: 수업 앱 중앙 자동 설치</li>
                                         <li class="flex items-start"><span class="text-red-500 mr-1 font-bold">!</span> 필수 이행: 전 기기 <strong>공장 초기화</strong> 필수</li>
                                     </ul>
                                 </div>
@@ -164,7 +156,7 @@
                                     <h3 class="font-bold text-lg">개방형 B. 자율 관리</h3>
                                     <span class="text-[10px] font-bold text-blue-600 bg-blue-100 px-2 py-1 rounded font-bold">편의성 중심</span>
                                 </div>
-                                <div class="space-y-2 text-gray-600 text-xs">
+                                <div class="space-y-2 text-gray-600 text-xs text-left">
                                     <p class="leading-relaxed text-left">학생의 자율성을 존중하며 기기 설정을 최소화하는 방식입니다.</p>
                                     <ul class="text-[11px] space-y-1 ml-1 font-medium text-left">
                                         <li class="flex items-start"><span class="text-blue-500 mr-1">✔</span> 초기화 불필요: 현재 상태 그대로 즉시 도입</li>
@@ -184,8 +176,24 @@
 
                 <div id="sectionAndroidDetails" class="step-content text-left">
                     <div class="flex items-center justify-between mb-6 border-b pb-4"><h2 id="androidDetailsTitle" class="text-lg font-bold text-gray-800 text-left">상세 정보 입력</h2><button type="button" onclick="goToStep('androidSelection')" class="text-xs text-blue-600 underline">방식 변경</button></div>
-                    <div id="androidASummary" class="hidden p-4 bg-red-50 text-xs text-red-800 border-l-4 border-red-500 rounded-r-xl mb-6 font-medium">• 모든 기기는 공장 초기화가 필수입니다.</div>
+                    
+                    <!-- 집중형 A 선택 시 안내 영상 링크 추가 -->
+                    <div id="androidASummary" class="hidden space-y-4 mb-6">
+                        <div class="p-4 bg-red-50 text-xs text-red-800 border-l-4 border-red-500 rounded-r-xl font-medium">• 모든 기기는 공장 초기화가 필수입니다.</div>
+                        <div class="p-4 bg-white border border-red-200 rounded-xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="flex items-center">
+                                <span class="text-xl mr-3">📹</span>
+                                <div>
+                                    <p class="text-[13px] font-bold text-gray-800 leading-tight">안드로이드 기기 초기화 및 등록 방법</p>
+                                    <p class="text-[11px] text-gray-500 mt-1">학생 계정 로그인 및 디바이스 등록 안내 영상</p>
+                                </div>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1eaN-6Qrn8tIIoyEl_RAy48vnxBSqEsn4/view?usp=sharing" target="_blank" class="w-full sm:w-auto px-4 py-2 bg-red-600 text-white text-xs font-bold rounded-lg hover:bg-red-700 transition-colors text-center whitespace-nowrap">영상 시청하기</a>
+                        </div>
+                    </div>
+
                     <div id="androidBSummary" class="hidden p-4 bg-blue-50 text-xs text-blue-800 border-l-4 border-blue-500 rounded-r-xl mb-6 font-medium">• 개방형 B는 신청서 원본 제출이 필수입니다. 아래 안내를 확인하세요.</div>
+                    
                     <div class="space-y-4">
                         <div class="p-4 border rounded-xl bg-gray-50 text-[11px] shadow-sm text-left"><label class="flex items-start cursor-pointer"><input type="checkbox" id="agreeAndroid" class="mt-1 mr-2"><span id="agreeAndroidText"></span></label></div>
                         <input type="text" id="schoolAndroid" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="학교명">
@@ -236,7 +244,7 @@
     <div id="sectionAdminDash" class="step-content max-w-6xl mx-auto">
         <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
             <div class="bg-indigo-700 p-6 text-white flex justify-between items-center text-left">
-                <div><h2 class="text-xl font-bold">아이모두 관리자 대시보드</h2><p class="text-xs text-indigo-200 mt-1">실시간 접수 관리</p></div>
+                <div><h2 class="text-xl font-bold text-left">아이모두 관리자 대시보드</h2><p class="text-xs text-indigo-200 mt-1 text-left">실시간 접수 관리</p></div>
                 <button onclick="resetAndGoToApply()" class="text-sm bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-800 transition-colors">로그아웃</button>
             </div>
             <div class="p-6 overflow-x-auto text-left">
@@ -356,7 +364,7 @@
                 const data = await response.json();
                 resDiv.classList.remove('hidden');
                 if (data.found) {
-                    resDiv.innerHTML = `<div class="border-b border-blue-200 pb-4 mb-4 text-left"><h4 class="font-bold text-blue-900 text-lg">${data.school}</h4><p class="text-[11px] text-blue-400 font-medium text-left">신청자: ${n} 선생님</p></div><div class="space-y-4"><div class="grid grid-cols-2 gap-4 text-sm"><div class="bg-white p-3 rounded-xl border border-blue-50 text-left"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1">기기 및 대수</p><p class="font-bold text-gray-800">${data.device} (${data.count}대)</p></div><div class="bg-white p-3 rounded-xl border border-blue-50 text-left"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1 text-left">관리 방식</p><p class="font-bold text-gray-800 text-left">${data.policy}</p></div></div><div class="bg-white p-4 rounded-xl border border-blue-100 shadow-sm flex justify-between items-center text-left"><div><p class="text-[10px] text-gray-400 font-bold uppercase mb-1 text-left">현재 처리 현황</p><p class="font-bold text-2xl ${data.status === '완료' ? 'text-green-600' : 'text-blue-600'} text-left">${data.status}</p></div><div class="text-right text-left"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1 text-left">신청 일자</p><p class="text-xs text-gray-500 font-medium text-left">${data.date}</p></div></div></div>`;
+                    resDiv.innerHTML = `<div class="border-b border-blue-200 pb-4 mb-4 text-left"><h4 class="font-bold text-blue-900 text-lg">${data.school}</h4><p class="text-[11px] text-blue-400 font-medium text-left">신청자: ${n} 선생님</p></div><div class="space-y-4"><div class="grid grid-cols-2 gap-4 text-sm"><div class="bg-white p-3 rounded-xl border border-blue-50 text-left"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1">기기 및 대수</p><p class="font-bold text-gray-800">${data.device} (${data.count}대)</p></div><div class="bg-white p-3 rounded-xl border border-blue-50 text-left"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1 text-left text-left">관리 방식</p><p class="font-bold text-gray-800 text-left">${data.policy}</p></div></div><div class="bg-white p-4 rounded-xl border border-blue-100 shadow-sm flex justify-between items-center text-left"><div><p class="text-[10px] text-gray-400 font-bold uppercase mb-1 text-left">현재 처리 현황</p><p class="font-bold text-2xl ${data.status === '완료' ? 'text-green-600' : 'text-blue-600'} text-left">${data.status}</p></div><div class="text-right text-left"><p class="text-[10px] text-gray-400 font-bold uppercase mb-1 text-left">신청 일자</p><p class="text-xs text-gray-500 font-medium text-left">${data.date}</p></div></div></div>`;
                 } else { resDiv.innerHTML = `<div class="text-center py-8 text-left"><p class="text-gray-400 text-sm text-left">등록된 내역이 없습니다.</p></div>`; }
             } catch (err) { showMessage("조회 오류"); }
             finally { btn.disabled = false; btn.innerText = "조회하기"; }
